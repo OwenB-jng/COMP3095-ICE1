@@ -12,6 +12,8 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+//Builder, hover for info, in prodserviceimpl
+//No sql database
 @Document(value = "product")
 public class Product {
 

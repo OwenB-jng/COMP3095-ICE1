@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/product")
+//hooks up where requests are sent/received
 @RequiredArgsConstructor
 
 public class ProductController {

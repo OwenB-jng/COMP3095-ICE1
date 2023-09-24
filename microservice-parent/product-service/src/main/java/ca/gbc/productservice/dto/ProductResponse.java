@@ -7,6 +7,9 @@ import lombok.NoArgsConstructor;
 import java.math.BigDecimal;
 
 @Data
+// Data is accessor to mutators
+// All Args / No Args / Builder all allow to instantiate objects
+// in line
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder

@@ -13,13 +13,19 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
+//always add service annotation to scan modules from driver file
 @RequiredArgsConstructor
+//lombok definition
 @Slf4j
+//logger
 
 public class ProductServiceImpl implements ProductService {
     private final ProductRepository productRepository;
+    //mongo repository injection
     private final MongoTemplate mongoTemplate;
+
     @Override
+    //dotwalking in this function
     public void createProduct(ProductRequest productRequest) {
         log.info("Creating a new product {}", productRequest.getName());
         Product product = Product.builder()
@@ -37,6 +43,7 @@ public class ProductServiceImpl implements ProductService {
         Query query = new Query();
         query.addCriteria(Criteria.where("id").is(productId));
         Product product = mongoTemplate.findOne(query, Product.class);
+        //using the Query, turing it into a Product using the mongo template
         if(product != null){
             product.setName(productRequest.getName());
             product.setDescription(productRequest.getDescription());
@@ -49,14 +56,14 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void deleteProduct(String productId) {
-        log.info("Product {} is deleted", productId);
         productRepository.deleteById(productId);
+        log.info("Product {} is deleted", productId);
     }
 
     @Override
     public List<ProductResponse> getAllProducts() {
         log.info("Returning a list of products");
-        List<Product> products = productRepository.findAll();
+        List<Product> products = productRepository.findAll(); //basically a select *
         return products.stream().map(this::mapToProductResponse).toList();
     }
 
