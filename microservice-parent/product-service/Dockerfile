@@ -23,8 +23,9 @@ RUN mkdir /app
 COPY --from=builder /home/gradle/src/build/libs/*.jar /app/product-service.jar
 
 # environment variables, maybe this is wrong because username is rootadmin in other places
-ENV MONGO_DB_USERNAME = mongoadmin \
-    MONGO_DB_PWD = password
+ENV MONGO_DB_USERNAME=mongoadmin \
+    MONGO_DB_PWD=password
+
 
 # ports, remember which port you already have in use
 EXPOSE 8084
