@@ -1,7 +1,7 @@
 //log the start
 print('start');
 
-//switch to product-service db/create it if doesn't exist
+
 db = db.getSiblingDB('product-service');
 
 db.createUser({
